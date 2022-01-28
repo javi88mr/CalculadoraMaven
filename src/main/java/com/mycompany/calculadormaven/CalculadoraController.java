@@ -173,7 +173,7 @@ public class CalculadoraController implements Initializable {
     void onCambioSignoButtonActon(ActionEvent event) {
         labelResultado.setText("-"+labelResultado.getText() );
     }
-
+//
     @FXML
     void onDivButtonAction(ActionEvent event) {
         if(operacion!=Operaciones.VACIO){
