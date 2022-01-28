@@ -4,13 +4,17 @@
  */
 package com.mycompany.calculadormaven;
 
-import java.awt.Button;
+
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.BorderPane;
 
@@ -22,7 +26,8 @@ import javafx.scene.layout.BorderPane;
  */
 public class CalculadoraController implements Initializable {
 
-    
+
+
     @FXML
     private Button button0;
 
@@ -82,6 +87,10 @@ public class CalculadoraController implements Initializable {
 
     @FXML
     private BorderPane root;
+
+    //modelo
+    private double operando1, operando2;
+    private Operaciones operacion=Operaciones.VACIO;
     
     /**
      * Initializes the controller class.
@@ -93,11 +102,138 @@ public class CalculadoraController implements Initializable {
     }    
     
     public CalculadoraController () throws IOException{
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("Calculadora.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/Calculadora.fxml"));
         
         loader.setController(this);
-        loader.load();        
+        loader.load();
+
+
         
+    }
+
+    @FXML
+    void on0ButtonActon(ActionEvent event) {
+        labelResultado.setText(labelResultado.getText() + "0");
+    }
+
+    @FXML
+    void on1ButtonActon(ActionEvent event) {
+        labelResultado.setText(labelResultado.getText() + "1");
+    }
+
+    @FXML
+    void on2ButtonActon(ActionEvent event) {
+        labelResultado.setText(labelResultado.getText() + "2");
+    }
+
+    @FXML
+    void on3ButtonActon(ActionEvent event) {
+        labelResultado.setText(labelResultado.getText() + "3");
+    }
+
+    @FXML
+    void on4ButtonActon(ActionEvent event) {
+        labelResultado.setText(labelResultado.getText() + "4");
+    }
+
+    @FXML
+    void on5ButtonActon(ActionEvent event) {
+        labelResultado.setText(labelResultado.getText() + "5");
+    }
+
+    @FXML
+    void on6ButtonActon(ActionEvent event) {
+        labelResultado.setText(labelResultado.getText() + "6");
+    }
+
+    @FXML
+    void on7ButtonActon(ActionEvent event) {
+        labelResultado.setText(labelResultado.getText() + "7");
+    }
+
+    @FXML
+    void on8ButtonActon(ActionEvent event) {
+        labelResultado.setText(labelResultado.getText() + "8");
+    }
+
+    @FXML
+    void on9ButtonActon(ActionEvent event) {
+        labelResultado.setText(labelResultado.getText() + "9");
+    }
+
+    @FXML
+    void onCButtonAction(ActionEvent event) {
+        labelResultado.setText("");
+        operando1 = 0;
+        operando2 = 0;
+        operacion = Operaciones.VACIO;
+    }
+
+    @FXML
+    void onCambioSignoButtonActon(ActionEvent event) {
+        labelResultado.setText("-"+labelResultado.getText() );
+    }
+
+    @FXML
+    void onDivButtonAction(ActionEvent event) {
+        if(operacion!=Operaciones.VACIO){
+            operando2 = Double.parseDouble(labelResultado.getText());
+            operando1=realizarOperacion();
+            labelResultado.setText(String.valueOf(operando1));
+            System.out.println(operando1);
+        }
+        else{
+            operando1=Double.parseDouble(labelResultado.getText());
+
+
+        }
+        labelResultado.setText("");
+        operacion=Operaciones.DIVISION;
+    }
+
+
+
+    @FXML
+    void onIgualButtonActon(ActionEvent event) {
+
+    }
+
+    @FXML
+    void onMasButtonActon(ActionEvent event) {
+
+    }
+
+    @FXML
+    void onMenosButtonActon(ActionEvent event) {
+
+    }
+
+    @FXML
+    void onPorButtonActon(ActionEvent event) {
+
+    }
+
+    @FXML
+    void onPuntoButtonActon(ActionEvent event) {
+
+    }
+    private double realizarOperacion() {
+        double resultado=0;
+        switch(operacion){
+            case SUMA:
+                resultado=operando1+operando2;
+                break;
+            case RESTA:
+                resultado=operando1-operando2;
+                break;
+            case MULTIPLICACION:
+                resultado=operando1*operando2;
+                break;
+            case DIVISION:
+                resultado=operando1/operando2;
+                break;
+        }
+        return resultado;
     }
     
     public BorderPane getVista (){
