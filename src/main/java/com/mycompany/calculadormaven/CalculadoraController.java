@@ -175,7 +175,7 @@ public class CalculadoraController implements Initializable {
     }
 //
     @FXML
-    void onDivButtonAction(ActionEvent event) {
+    void onDivButtonAction(ActionEvent event) {  
         if(operacion!=Operaciones.VACIO){
             operando2 = Double.parseDouble(labelResultado.getText());
             operando1=realizarOperacion();
@@ -184,9 +184,9 @@ public class CalculadoraController implements Initializable {
         }
         else{
             operando1=Double.parseDouble(labelResultado.getText());
+            
 
-
-        }
+        }       
         labelResultado.setText("");
         operacion=Operaciones.DIVISION;
     }
@@ -195,27 +195,69 @@ public class CalculadoraController implements Initializable {
 
     @FXML
     void onIgualButtonActon(ActionEvent event) {
-
+        if(operacion!=Operaciones.VACIO){
+            operando2 = Double.parseDouble(labelResultado.getText());
+            operando1=realizarOperacion();
+            labelResultado.setText(String.valueOf(operando1));
+            System.out.println(operando1);
+            operacion = Operaciones.VACIO;
+        }
     }
 
     @FXML
     void onMasButtonActon(ActionEvent event) {
+        if(operacion!=Operaciones.VACIO){
+            operando2 = Double.parseDouble(labelResultado.getText());
+            operando1=realizarOperacion();
+            labelResultado.setText(String.valueOf(operando1));
+            System.out.println(operando1);
+        }
+        else{
+            operando1=Double.parseDouble(labelResultado.getText());
+            
 
+        }       
+        labelResultado.setText("");
+        operacion=Operaciones.SUMA;
     }
 
     @FXML
     void onMenosButtonActon(ActionEvent event) {
+        if(operacion!=Operaciones.VACIO){
+            operando2 = Double.parseDouble(labelResultado.getText());
+            operando1=realizarOperacion();
+            labelResultado.setText(String.valueOf(operando1));
+            System.out.println(operando1);
+        }
+        else{
+            operando1=Double.parseDouble(labelResultado.getText());
+            
 
+        }       
+        labelResultado.setText("");
+        operacion=Operaciones.RESTA;
     }
 
     @FXML
     void onPorButtonActon(ActionEvent event) {
+        if(operacion!=Operaciones.VACIO){
+            operando2 = Double.parseDouble(labelResultado.getText());
+            operando1=realizarOperacion();
+            labelResultado.setText(String.valueOf(operando1));
+            System.out.println(operando1);
+        }
+        else{
+            operando1=Double.parseDouble(labelResultado.getText());
+            
 
+        }       
+        labelResultado.setText("");
+        operacion=Operaciones.MULTIPLICACION;
     }
 
     @FXML
     void onPuntoButtonActon(ActionEvent event) {
-
+        labelResultado.setText(labelResultado.getText() + "." );
     }
     private double realizarOperacion() {
         double resultado=0;
