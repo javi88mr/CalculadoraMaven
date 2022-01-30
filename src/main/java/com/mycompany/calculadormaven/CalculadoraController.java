@@ -171,7 +171,7 @@ public class CalculadoraController implements Initializable {
 
     @FXML
     void onCambioSignoButtonActon(ActionEvent event) {
-        labelResultado.setText("-"+labelResultado.getText() );
+        labelResultado.setText(String.valueOf(Double.parseDouble(labelResultado.getText())*-1));        
     }
 //
     @FXML
