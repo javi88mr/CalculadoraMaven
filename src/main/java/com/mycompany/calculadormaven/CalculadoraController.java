@@ -257,7 +257,11 @@ public class CalculadoraController implements Initializable {
 
     @FXML
     void onPuntoButtonActon(ActionEvent event) {
-        labelResultado.setText(labelResultado.getText() + "." );
+        if (labelResultado.getText().contains(".")){
+            labelResultado.getText();
+        }else{
+            labelResultado.setText(labelResultado.getText() + "." );
+        }
     }
     private double realizarOperacion() {
         double resultado=0;
